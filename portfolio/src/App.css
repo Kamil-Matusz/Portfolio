@@ -113,6 +113,31 @@
   transform-origin: left;
 }
 
+.rail__lang {
+  display: flex;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.rail__lang-link {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  color: var(--graphite);
+  padding: 0.2rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.rail__lang-link:hover {
+  color: var(--ink);
+}
+
+.rail__lang-link[aria-current] {
+  color: var(--ink);
+  border-bottom-color: var(--signal);
+}
+
 /* ---------- page shell ---------- */
 
 .page {
@@ -535,7 +560,7 @@
 
 /* ---------- responsive ---------- */
 
-@media (max-width: 1100px) {
+@media (max-width: 1180px) {
   .rail__block--wide {
     display: none;
   }
@@ -553,6 +578,10 @@
 
   .rail__link {
     font-size: 0.8125rem;
+  }
+
+  .rail__lang-link {
+    font-size: 0.75rem;
   }
 
   .rail__mark {

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { ReactNode } from 'react'
-import { pages, profile } from './content'
+import { certifications, hrefFor, identity, links, useLang, useSite } from './content'
+import type { RouteId, Tech } from './content'
 
 function Section({
   id,
@@ -22,10 +23,12 @@ function Section({
 }
 
 function PageHead({ title, lead }: { title: string; lead: string }) {
+  const { profile } = useSite()
+
   return (
     <header className="pagehead reveal">
       <p className="mono">
-        {profile.firstName} {profile.lastName} / {profile.role}
+        {identity.firstName} {identity.lastName} / {profile.role}
       </p>
       <h1 className="pagehead__title">{title}</h1>
       <p className="pagehead__lead">{lead}</p>
@@ -45,12 +48,15 @@ function Tags({ items }: { items: readonly string[] }) {
   )
 }
 
-function Next({ to, label }: { to: string; label: string }) {
+function Next({ to }: { to: RouteId }) {
+  const lang = useLang()
+  const { nav, ui } = useSite()
+
   return (
     <nav className="next reveal">
-      <Link className="next__link" to={to}>
-        <span className="mono">Dalej</span>
-        <span className="next__label">{label}</span>
+      <Link className="next__link" to={hrefFor(lang, to)}>
+        <span className="mono">{ui.next}</span>
+        <span className="next__label">{nav[to].label}</span>
         <span className="next__arrow" aria-hidden="true">
           →
         </span>
@@ -59,11 +65,7 @@ function Next({ to, label }: { to: string; label: string }) {
   )
 }
 
-function Chips({
-  items,
-}: {
-  items: readonly { readonly name: string; readonly icon: string }[]
-}) {
+function Chips({ items }: { items: readonly Tech[] }) {
   return (
     <ul className="chips">
       {items.map((item) => (
@@ -79,22 +81,24 @@ function Chips({
 }
 
 export function Home() {
+  const { profile, ui } = useSite()
+
   return (
     <>
       <header className="masthead">
         <h1 className="masthead__name">
-          <span>{profile.firstName}</span>
-          <span>{profile.lastName}</span>
+          <span>{identity.firstName}</span>
+          <span>{identity.lastName}</span>
         </h1>
         <div className="masthead__meta mono">
           <span>{profile.role}</span>
-          <span>{profile.location}</span>
+          <span>{identity.location}</span>
           <span>{profile.availableNote}</span>
         </div>
         <p className="masthead__thesis">{profile.thesis}</p>
       </header>
 
-      <Section id="about" label="O mnie">
+      <Section id="about" label={ui.about}>
         <div>
           {profile.intro.map((paragraph) => (
             <p key={paragraph} className="prose">
@@ -115,15 +119,17 @@ export function Home() {
         </ul>
       </Section>
 
-      <Next to="/doswiadczenie" label="Doświadczenie" />
+      <Next to="experience" />
     </>
   )
 }
 
 export function Experience() {
+  const { pages, profile } = useSite()
+
   return (
     <>
-      <PageHead {...pages.doswiadczenie} />
+      <PageHead {...pages.experience} />
       <div className="page__body page__body--flow reveal">
         {profile.work.map((job) => {
           const stacked = job.roles.length > 1
@@ -157,15 +163,17 @@ export function Experience() {
           )
         })}
       </div>
-      <Next to="/projekty" label="Projekty" />
+      <Next to="projects" />
     </>
   )
 }
 
 export function Projects() {
+  const { pages, profile } = useSite()
+
   return (
     <>
-      <PageHead {...pages.projekty} />
+      <PageHead {...pages.projects} />
       <div className="page__body reveal">
         {profile.projects.map((project) => (
           <a
@@ -192,6 +200,8 @@ export function Projects() {
 }
 
 export function Stack() {
+  const { pages, profile, ui } = useSite()
+
   return (
     <>
       <PageHead {...pages.stack} />
@@ -203,8 +213,8 @@ export function Stack() {
           </div>
         ))}
         <div className="stack-group">
-          <h2 className="mono">Certyfikaty</h2>
-          <Chips items={profile.certifications} />
+          <h2 className="mono">{ui.certifications}</h2>
+          <Chips items={certifications} />
         </div>
       </div>
     </>
@@ -212,11 +222,13 @@ export function Stack() {
 }
 
 export function Contact() {
+  const { pages } = useSite()
+
   return (
     <>
-      <PageHead {...pages.kontakt} />
+      <PageHead {...pages.contact} />
       <div className="page__body reveal">
-        {profile.links.map((link) => (
+        {links.map((link) => (
           <a
             key={link.label}
             className="link-row"
@@ -234,16 +246,16 @@ export function Contact() {
 }
 
 export function NotFound() {
+  const lang = useLang()
+  const { ui } = useSite()
+
   return (
     <>
-      <PageHead
-        title="404"
-        lead="Tej strony tu nie ma. Wróć na start albo zajrzyj do projektów."
-      />
+      <PageHead title="404" lead={ui.notFoundLead} />
       <div className="page__body reveal">
-        <Link className="link-row" to="/">
-          <span className="mono">Wróć</span>
-          <span className="link-row__value">Strona główna</span>
+        <Link className="link-row" to={hrefFor(lang, 'home')}>
+          <span className="mono">{ui.back}</span>
+          <span className="link-row__value">{ui.home}</span>
         </Link>
       </div>
     </>

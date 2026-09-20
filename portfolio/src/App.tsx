@@ -1,15 +1,34 @@
 import { useEffect, useState } from 'react'
-import { NavLink, Route, Routes, useLocation } from 'react-router-dom'
-import { profile, routes } from './content'
+import type { ReactElement } from 'react'
+import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom'
+import {
+  LangContext,
+  content,
+  currentRouteId,
+  defaultLang,
+  hrefFor,
+  identity,
+  langs,
+  pageIds,
+  routeIds,
+} from './content'
+import type { Lang, PageId } from './content'
 import { Contact, Experience, Home, NotFound, Projects, Stack } from './pages'
 import './App.css'
 
-function useClock(timeZone: string) {
+const views: Readonly<Record<PageId, ReactElement>> = {
+  experience: <Experience />,
+  projects: <Projects />,
+  stack: <Stack />,
+  contact: <Contact />,
+}
+
+function useClock(locale: string) {
   const [now, setNow] = useState('')
 
   useEffect(() => {
-    const format = new Intl.DateTimeFormat('pl-PL', {
-      timeZone,
+    const format = new Intl.DateTimeFormat(locale, {
+      timeZone: identity.timezone,
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
@@ -18,7 +37,7 @@ function useClock(timeZone: string) {
     tick()
     const id = window.setInterval(tick, 1000)
     return () => window.clearInterval(id)
-  }, [timeZone])
+  }, [locale])
 
   return now
 }
@@ -75,33 +94,76 @@ function useScrollReset(key: string) {
   }, [key])
 }
 
-function Rail({ progress }: { progress: number }) {
-  const now = useClock(profile.timezone)
+function alternate(hreflang: string, href: string) {
+  const selector = `link[rel="alternate"][hreflang="${hreflang}"]`
+  let link = document.head.querySelector<HTMLLinkElement>(selector)
+  if (!link) {
+    link = document.createElement('link')
+    link.rel = 'alternate'
+    link.hreflang = hreflang
+    document.head.appendChild(link)
+  }
+  link.href = href
+}
+
+function useDocumentHead(lang: Lang, pathname: string) {
+  useEffect(() => {
+    const { pages, ui } = content[lang]
+    const id = currentRouteId(pathname, lang)
+
+    document.documentElement.lang = lang
+    document.title = id === 'home' ? ui.siteTitle : `${pages[id].title} / ${ui.siteTitle}`
+
+    const { origin } = window.location
+    for (const code of langs) alternate(code, origin + hrefFor(code, id))
+    alternate('x-default', origin + hrefFor(defaultLang, id))
+  }, [lang, pathname])
+}
+
+function Rail({ lang, progress }: { lang: Lang; progress: number }) {
+  const { pathname } = useLocation()
+  const { nav, ui, locale } = content[lang]
+  const now = useClock(locale)
+  const here = currentRouteId(pathname, lang)
 
   return (
     <header className="rail">
-      <NavLink className="rail__mark" to="/">
-        {profile.firstName} {profile.lastName}
+      <NavLink className="rail__mark" to={hrefFor(lang, 'home')}>
+        {identity.firstName} {identity.lastName}
       </NavLink>
 
       <div className="rail__block rail__block--wide">
-        <span className="rail__key">Status</span>
+        <span className="rail__key">{ui.status}</span>
         <span className="rail__val">
-          {profile.available && <i className="rail__dot" aria-hidden="true" />}
-          {profile.available ? 'Dostępny' : 'Zajęty'}
+          {identity.available && <i className="rail__dot" aria-hidden="true" />}
+          {identity.available ? ui.available : ui.busy}
         </span>
       </div>
 
       <div className="rail__block rail__block--wide">
-        <span className="rail__key">{profile.location}</span>
+        <span className="rail__key">{identity.location}</span>
         <span className="rail__val">{now}</span>
       </div>
 
-      <nav className="rail__nav" aria-label="Nawigacja">
-        {routes.map((route) => (
-          <NavLink key={route.path} to={route.path} className="rail__link" end>
-            {route.label}
+      <nav className="rail__nav" aria-label={ui.nav}>
+        {routeIds.map((id) => (
+          <NavLink key={id} to={hrefFor(lang, id)} className="rail__link" end>
+            {nav[id].label}
           </NavLink>
+        ))}
+      </nav>
+
+      <nav className="rail__lang" aria-label={ui.language}>
+        {langs.map((code) => (
+          <Link
+            key={code}
+            to={hrefFor(code, here)}
+            className="rail__lang-link"
+            aria-current={code === lang ? 'true' : undefined}
+            hrefLang={code}
+          >
+            {code.toUpperCase()}
+          </Link>
         ))}
       </nav>
 
@@ -112,38 +174,49 @@ function Rail({ progress }: { progress: number }) {
   )
 }
 
-function App() {
+function Site({ lang }: { lang: Lang }) {
   const { pathname } = useLocation()
+  const { nav, profile, ui } = content[lang]
   const progress = useScrollProgress()
+
   useScrollReset(pathname)
   useReveal(pathname)
+  useDocumentHead(lang, pathname)
 
   return (
-    <>
+    <LangContext.Provider value={lang}>
       <a className="skip" href="#main">
-        Przejdź do treści
+        {ui.skip}
       </a>
 
-      <Rail progress={progress} />
+      <Rail lang={lang} progress={progress} />
 
       <main className="page" id="main">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/doswiadczenie" element={<Experience />} />
-          <Route path="/projekty" element={<Projects />} />
-          <Route path="/stack" element={<Stack />} />
-          <Route path="/kontakt" element={<Contact />} />
+          <Route index element={<Home />} />
+          {pageIds.map((id) => (
+            <Route key={id} path={nav[id].path} element={views[id]} />
+          ))}
           <Route path="*" element={<NotFound />} />
         </Routes>
 
         <footer className="colophon mono">
           <span>
-            {profile.firstName} {profile.lastName} / {profile.role}
+            {identity.firstName} {identity.lastName} / {profile.role}
           </span>
           <span>Archivo · Newsreader · JetBrains Mono</span>
         </footer>
       </main>
-    </>
+    </LangContext.Provider>
+  )
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/en/*" element={<Site lang="en" />} />
+      <Route path="/*" element={<Site lang="pl" />} />
+    </Routes>
   )
 }
 
