@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import { profile, routes } from './content'
-import { Contact, Home, NotFound, Projects, Stack } from './pages'
+import { Contact, Experience, Home, NotFound, Projects, Stack } from './pages'
 import './App.css'
 
 function useClock(timeZone: string) {
@@ -129,6 +129,7 @@ function App() {
       <main className="page" id="main">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/doswiadczenie" element={<Experience />} />
           <Route path="/projekty" element={<Projects />} />
           <Route path="/stack" element={<Stack />} />
           <Route path="/kontakt" element={<Contact />} />

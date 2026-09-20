@@ -20,29 +20,59 @@ export const profile = {
   work: [
     {
       company: 'Kinguin',
-      title: 'Senior Backend Engineer',
-      from: '2022',
-      to: 'teraz',
-      summary:
-        'Rozwój usług płatnościowych i katalogowych obsługujących ruch marketplace.',
-      points: [
-        'Rozbicie monolitu na usługi domenowe bez przerwy w działaniu sprzedaży.',
-        'Wprowadzenie kontraktowych testów integracyjnych - spadek regresji na produkcji.',
-        'Mentoring zespołu w zakresie wzorców testowania i przeglądów kodu.',
+      meta: 'Umowa zlecenie',
+      location: 'Praca zdalna',
+      period: 'sie 2024 / teraz',
+      roles: [
+        {
+          title: 'Junior Backend Developer',
+          period: 'lut 2025 / teraz',
+          summary: '',
+          points: [],
+        },
+        {
+          title: 'Intern Backend Developer',
+          period: 'sie 2024 / lut 2025',
+          summary: '',
+          points: [
+            'Wdrożenie w działanie firmy i pracę zespołów.',
+            'Wsparcie przy rozwoju oprogramowania.',
+          ],
+        },
       ],
-      stack: ['Java', 'Spring Boot', 'PostgreSQL', 'Kafka'],
+      stack: ['Java', 'Spring Framework'],
     },
     {
-      company: 'Poprzednia firma',
-      title: 'Backend Engineer',
-      from: '2019',
-      to: '2022',
-      summary: 'Utrzymanie i rozwój platformy B2B dla klientów enterprise.',
-      points: [
-        'Migracja warstwy danych na Entity Framework Core z pełnym pokryciem migracji.',
-        'Redukcja czasu odpowiedzi kluczowych endpointów o rząd wielkości.',
+      company: 'Ideo Software',
+      meta: 'Praktyka',
+      location: 'Rzeszów, praca hybrydowa',
+      period: 'lut 2024 / mar 2024',
+      roles: [
+        {
+          title: 'Junior .NET Developer',
+          period: 'lut 2024 / mar 2024',
+          summary:
+            'Praktyki studenckie. Praca przy wewnętrznym projekcie opartym o mikroserwisy.',
+          points: [],
+        },
       ],
-      stack: ['.NET', 'EF Core', 'Azure', 'SQL Server'],
+      stack: ['C#', 'ASP.NET'],
+    },
+    {
+      company: 'Ideo Sp. z o.o.',
+      meta: 'Praktyka',
+      location: 'Rzeszów, praca hybrydowa',
+      period: 'lip 2023',
+      roles: [
+        {
+          title: 'Junior .NET Developer',
+          period: 'lip 2023',
+          summary:
+            'Miesięczna praktyka absolwencka. Prace nad aktualizacją oprogramowania wewnątrz firmy.',
+          points: [],
+        },
+      ],
+      stack: ['Vue.js', '.NET'],
     },
   ],
   projects: [
@@ -63,13 +93,48 @@ export const profile = {
     },
   ],
   stack: [
-    { group: 'Języki', items: ['Java', 'C#', 'TypeScript', 'SQL'] },
-    { group: 'Frameworki', items: ['Spring Boot', '.NET', 'EF Core', 'React'] },
-    { group: 'Dane', items: ['PostgreSQL', 'SQL Server', 'Redis', 'Kafka'] },
-    { group: 'Infra', items: ['Docker', 'Kubernetes', 'GitHub Actions', 'Azure'] },
+    {
+      group: 'Back-end',
+      items: [
+        { name: 'Java', icon: 'java' },
+        { name: 'Spring', icon: 'spring' },
+        { name: 'C#', icon: 'csharp' },
+        { name: '.NET', icon: 'dotnet' },
+      ],
+    },
+    {
+      group: 'Front-end',
+      items: [
+        { name: 'JavaScript', icon: 'javascript' },
+        { name: 'TypeScript', icon: 'typescript' },
+        { name: 'Vue.js', icon: 'vuejs' },
+        { name: 'React', icon: 'react' },
+      ],
+    },
+    {
+      group: 'Konteneryzacja',
+      items: [
+        { name: 'Docker', icon: 'docker' },
+        { name: 'Kubernetes', icon: 'kubernetes' },
+      ],
+    },
+    {
+      group: 'Chmura',
+      items: [{ name: 'Azure', icon: 'azure' }],
+    },
+    {
+      group: 'Bazy danych',
+      items: [
+        { name: 'MySQL', icon: 'mysql' },
+        { name: 'PostgreSQL', icon: 'postgresql' },
+        { name: 'MSSQL', icon: 'mssql' },
+        { name: 'MongoDB', icon: 'mongodb' },
+      ],
+    },
   ],
+  certifications: [{ name: 'Azure Fundamentals (AZ-900)', icon: 'azure' }],
   links: [
-    { label: 'E-mail', value: 'kamil.matusz@kinguin.net', href: 'mailto:kamil.matusz@kinguin.net' },
+    { label: 'E-mail', value: 'kamil.matusz@kinguin.net', href: 'mailto:matuszkamil076@gmail.com' },
     { label: 'GitHub', value: 'github.com/Awahir', href: 'https://github.com/Awahir' },
     { label: 'LinkedIn', value: 'linkedin.com/in/…', href: 'https://linkedin.com/' },
   ],
@@ -77,12 +142,17 @@ export const profile = {
 
 export const routes = [
   { path: '/', label: 'Start' },
+  { path: '/doswiadczenie', label: 'Doświadczenie' },
   { path: '/projekty', label: 'Projekty' },
   { path: '/stack', label: 'Stack' },
   { path: '/kontakt', label: 'Kontakt' },
 ] as const
 
 export const pages = {
+  doswiadczenie: {
+    title: 'Doświadczenie',
+    lead: 'Gdzie pracowałem i czym się tam zajmowałem.',
+  },
   projekty: {
     title: 'Projekty',
     lead: 'Rzeczy zbudowane poza godzinami pracy i to, czego nauczyły.',

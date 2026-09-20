@@ -1,10 +1,10 @@
 :root {
-  --paper: #fbfaf7;
-  --paper-sunk: #f2f1ec;
-  --ink: #111310;
-  --graphite: #6b6d64;
-  --rule: #d9d8d0;
-  --signal: #1b6b3a;
+  --paper: #0e100d;
+  --paper-sunk: #161813;
+  --ink: #eceae2;
+  --graphite: #8e9186;
+  --rule: #2b2e28;
+  --signal: #56b37c;
 
   --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   --prose: 'Newsreader', Georgia, serif;
@@ -14,18 +14,7 @@
   --gutter: clamp(1.25rem, 5vw, 5rem);
   --step: clamp(3.5rem, 9vh, 7rem);
 
-  color-scheme: light dark;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #0e100d;
-    --paper-sunk: #161813;
-    --ink: #eceae2;
-    --graphite: #8e9186;
-    --rule: #2b2e28;
-    --signal: #56b37c;
-  }
+  color-scheme: dark;
 }
 
 *,

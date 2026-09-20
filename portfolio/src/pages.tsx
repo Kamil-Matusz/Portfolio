@@ -45,6 +45,39 @@ function Tags({ items }: { items: readonly string[] }) {
   )
 }
 
+function Next({ to, label }: { to: string; label: string }) {
+  return (
+    <nav className="next reveal">
+      <Link className="next__link" to={to}>
+        <span className="mono">Dalej</span>
+        <span className="next__label">{label}</span>
+        <span className="next__arrow" aria-hidden="true">
+          →
+        </span>
+      </Link>
+    </nav>
+  )
+}
+
+function Chips({
+  items,
+}: {
+  items: readonly { readonly name: string; readonly icon: string }[]
+}) {
+  return (
+    <ul className="chips">
+      {items.map((item) => (
+        <li key={item.name} className="chip">
+          <svg className="icon" aria-hidden="true" focusable="false">
+            <use href={`#i-${item.icon}`} />
+          </svg>
+          {item.name}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 export function Home() {
   return (
     <>
@@ -82,36 +115,49 @@ export function Home() {
         </ul>
       </Section>
 
-      <Section id="work" label="Doświadczenie">
-        {profile.work.map((job) => (
-          <article key={job.company} className="entry">
-            <p className="mono">
-              {job.from} / {job.to}
-            </p>
-            <div>
-              <h3 className="entry__title">{job.company}</h3>
-              <p className="entry__role">{job.title}</p>
-              <p className="entry__summary">{job.summary}</p>
-              <ul className="entry__points">
-                {job.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-              <Tags items={job.stack} />
-            </div>
-          </article>
-        ))}
-      </Section>
+      <Next to="/doswiadczenie" label="Doświadczenie" />
+    </>
+  )
+}
 
-      <nav className="next reveal">
-        <Link className="next__link" to="/projekty">
-          <span className="mono">Dalej</span>
-          <span className="next__label">Projekty</span>
-          <span className="next__arrow" aria-hidden="true">
-            →
-          </span>
-        </Link>
-      </nav>
+export function Experience() {
+  return (
+    <>
+      <PageHead {...pages.doswiadczenie} />
+      <div className="page__body page__body--flow reveal">
+        {profile.work.map((job) => {
+          const stacked = job.roles.length > 1
+          return (
+            <article key={job.company} className="entry">
+              <p className="mono">{job.period}</p>
+              <div>
+                <h2 className="entry__title">{job.company}</h2>
+                <p className="entry__meta mono">
+                  {job.meta} / {job.location}
+                </p>
+                <ul className={stacked ? 'roles roles--stacked' : 'roles'}>
+                  {job.roles.map((role) => (
+                    <li key={role.title} className="role">
+                      <h3 className="role__title">{role.title}</h3>
+                      {stacked && <p className="role__period mono">{role.period}</p>}
+                      {role.summary && <p className="entry__summary">{role.summary}</p>}
+                      {role.points.length > 0 && (
+                        <ul className="entry__points">
+                          {role.points.map((point) => (
+                            <li key={point}>{point}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+                <Tags items={job.stack} />
+              </div>
+            </article>
+          )
+        })}
+      </div>
+      <Next to="/projekty" label="Projekty" />
     </>
   )
 }
@@ -153,9 +199,13 @@ export function Stack() {
         {profile.stack.map((group) => (
           <div key={group.group} className="stack-group">
             <h2 className="mono">{group.group}</h2>
-            <Tags items={group.items} />
+            <Chips items={group.items} />
           </div>
         ))}
+        <div className="stack-group">
+          <h2 className="mono">Certyfikaty</h2>
+          <Chips items={profile.certifications} />
+        </div>
       </div>
     </>
   )
