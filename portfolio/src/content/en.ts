@@ -91,19 +91,36 @@ export const en: Content = {
     ],
     projects: [
       {
-        name: 'Project name',
-        year: '2025',
+        name: 'CertiBlock',
+        year: '2025-2026',
         summary:
-          'One sentence on what the project does and for whom - no marketing, just the facts.',
-        stack: ['TypeScript', 'React', 'Vite'],
-        href: 'https://github.com/',
+          'The research part of my MSc thesis. A microservice system comparing how efficiently Ethereum and Polygon handle registration and verification of digital certificates. It collects transaction time and cost metrics and visualises the comparison live.',
+        stack: ['.NET 9', 'C#', 'PostgreSQL', 'MongoDB', 'RabbitMQ', 'InfluxDB', 'React', 'Docker'],
+        href: 'https://github.com/Kamil-Matusz/CertiBlock',
       },
       {
-        name: 'Second project',
+        name: 'Asklepios',
+        year: '2024-2025',
+        summary:
+          'My BEng thesis. A system supporting the daily work of medical facilities: patient records, test results, surgery and operating room scheduling and outpatient clinic operations, with access split by staff role.',
+        stack: ['.NET 7', 'C#', 'EF Core', 'PostgreSQL', 'Redis', 'RabbitMQ', 'Hangfire', 'Vue', 'Docker'],
+        href: 'https://github.com/Kamil-Matusz/Asklepios',
+      },
+      {
+        name: 'Shot Blasting Machines',
         year: '2024',
-        summary: 'What was hard about it and how it was solved.',
-        stack: ['Java', 'Spring'],
-        href: 'https://github.com/',
+        summary:
+          'A university team project run in Scrum. A desktop application for a shot blasting machine manufacturer: orders and their personalisation, the production workflow with quality testing, warehouse stock, invoices and task lists.',
+        stack: ['Java', 'Spring Boot', 'Hibernate', 'MySQL', 'Vue', 'TypeScript', 'Electron'],
+        href: 'https://github.com/Kamil-Matusz/Shot-Blasting-Machines',
+      },
+      {
+        name: 'StockMarket',
+        year: '2024',
+        summary:
+          'A model of stock exchanges and investment assets - ETFs, cryptocurrencies, NFTs and raw materials - in the Neo4j graph database, together with their relationships and risk classification. Custom Python scrapers collect the data and load it into the graph.',
+        stack: ['Python', 'Neo4j', 'Cypher'],
+        href: 'https://github.com/Kamil-Matusz/StockMarket',
       },
     ],
     stack: [

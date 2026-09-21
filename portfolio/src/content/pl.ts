@@ -91,19 +91,36 @@ export const pl: Content = {
     ],
     projects: [
       {
-        name: 'Nazwa projektu',
-        year: '2025',
+        name: 'CertiBlock',
+        year: '2025-2026',
         summary:
-          'Jedno zdanie o tym, co projekt robi i dla kogo - bez marketingu, konkretnie.',
-        stack: ['TypeScript', 'React', 'Vite'],
-        href: 'https://github.com/',
+          'Część badawcza pracy magisterskiej. System mikroserwisowy porównujący wydajność sieci Ethereum i Polygon przy rejestracji oraz weryfikacji certyfikatów cyfrowych. Zbiera metryki czasu i kosztu transakcji i pokazuje porównanie na żywo.',
+        stack: ['.NET 9', 'C#', 'PostgreSQL', 'MongoDB', 'RabbitMQ', 'InfluxDB', 'React', 'Docker'],
+        href: 'https://github.com/Kamil-Matusz/CertiBlock',
       },
       {
-        name: 'Drugi projekt',
+        name: 'Asklepios',
+        year: '2024-2025',
+        summary:
+          'Praca inżynierska. System wspierający pracę placówek medycznych: kartoteki pacjentów, badania, grafiki zabiegów i sal operacyjnych oraz obsługa poradni, z dostępem rozdzielonym na role personelu.',
+        stack: ['.NET 7', 'C#', 'EF Core', 'PostgreSQL', 'Redis', 'RabbitMQ', 'Hangfire', 'Vue', 'Docker'],
+        href: 'https://github.com/Kamil-Matusz/Asklepios',
+      },
+      {
+        name: 'Shot Blasting Machines',
         year: '2024',
-        summary: 'Co było trudne i jak zostało rozwiązane.',
-        stack: ['Java', 'Spring'],
-        href: 'https://github.com/',
+        summary:
+          'Projekt zespołowy na studiach, prowadzony w Scrumie. Aplikacja desktopowa dla producenta śrutownic: zamówienia i ich personalizacja, przebieg produkcji z kontrolą jakości, magazyn oraz faktury i listy zadań.',
+        stack: ['Java', 'Spring Boot', 'Hibernate', 'MySQL', 'Vue', 'TypeScript', 'Electron'],
+        href: 'https://github.com/Kamil-Matusz/Shot-Blasting-Machines',
+      },
+      {
+        name: 'StockMarket',
+        year: '2024',
+        summary:
+          'Model giełd i instrumentów inwestycyjnych - ETF-ów, kryptowalut, NFT i surowców - w bazie grafowej Neo4j, razem z powiązaniami i klasyfikacją ryzyka. Dane zbierają własne scrapery w Pythonie, które zasilają graf.',
+        stack: ['Python', 'Neo4j', 'Cypher'],
+        href: 'https://github.com/Kamil-Matusz/StockMarket',
       },
     ],
     stack: [
