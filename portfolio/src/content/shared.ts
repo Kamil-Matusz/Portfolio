@@ -9,9 +9,9 @@ export const identity = {
 } as const
 
 export const links = [
-  { label: 'E-mail', value: 'kamil.matusz@kinguin.net', href: 'mailto:matuszkamil076@gmail.com' },
-  { label: 'GitHub', value: 'github.com/Awahir', href: 'https://github.com/Awahir' },
-  { label: 'LinkedIn', value: 'linkedin.com/in/…', href: 'https://linkedin.com/' },
+  { label: 'E-mail', value: 'matuszkamil076@gmail.com', href: 'mailto:matuszkamil076@gmail.com' },
+  { label: 'GitHub', value: 'https://github.com/Kamil-Matusz', href: 'https://github.com/Kamil-Matusz' },
+  { label: 'LinkedIn', value: 'https://www.linkedin.com/in/kamil-matusz/', href: 'https://www.linkedin.com/in/kamil-matusz/' },
 ] as const
 
 export const certifications: readonly Tech[] = [

@@ -13,11 +13,12 @@ import {
   routeIds,
 } from './content'
 import type { Lang, PageId } from './content'
-import { Contact, Experience, Home, NotFound, Projects, Stack } from './pages'
+import { Contact, Education, Experience, Home, NotFound, Projects, Stack } from './pages'
 import './App.css'
 
 const views: Readonly<Record<PageId, ReactElement>> = {
   experience: <Experience />,
+  education: <Education />,
   projects: <Projects />,
   stack: <Stack />,
   contact: <Contact />,

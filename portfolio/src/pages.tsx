@@ -163,6 +163,30 @@ export function Experience() {
           )
         })}
       </div>
+      <Next to="education" />
+    </>
+  )
+}
+
+export function Education() {
+  const { pages, profile } = useSite()
+
+  return (
+    <>
+      <PageHead {...pages.education} />
+      <div className="page__body page__body--flow reveal">
+        {profile.education.map((school) => (
+          <article key={school.school} className="entry">
+            <p className="mono">{school.period}</p>
+            <div>
+              <h2 className="entry__title">{school.school}</h2>
+              <p className="entry__meta mono">
+                {school.degree} / {school.field}
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
       <Next to="projects" />
     </>
   )

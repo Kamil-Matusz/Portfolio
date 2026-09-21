@@ -1,4 +1,4 @@
-export const routeIds = ['home', 'experience', 'projects', 'stack', 'contact'] as const
+export const routeIds = ['home', 'experience', 'education', 'projects', 'stack', 'contact'] as const
 
 export type RouteId = (typeof routeIds)[number]
 export type PageId = Exclude<RouteId, 'home'>
@@ -49,6 +49,13 @@ export interface Job {
   readonly stack: readonly string[]
 }
 
+export interface Education {
+  readonly school: string
+  readonly degree: string
+  readonly field: string
+  readonly period: string
+}
+
 export interface Project {
   readonly name: string
   readonly year: string
@@ -71,6 +78,7 @@ export interface Content {
     readonly intro: readonly string[]
     readonly metrics: readonly Metric[]
     readonly work: readonly Job[]
+    readonly education: readonly Education[]
     readonly projects: readonly Project[]
     readonly stack: readonly StackGroup[]
   }

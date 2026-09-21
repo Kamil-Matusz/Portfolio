@@ -560,7 +560,7 @@
 
 /* ---------- responsive ---------- */
 
-@media (max-width: 1180px) {
+@media (max-width: 1340px) {
   .rail__block--wide {
     display: none;
   }

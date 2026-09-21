@@ -75,6 +75,20 @@ export const pl: Content = {
         stack: ['Vue.js', '.NET'],
       },
     ],
+    education: [
+      {
+        school: 'Wyższa Szkoła Informatyki i Zarządzania w Rzeszowie',
+        degree: 'Studia magisterskie',
+        field: 'Informatyka - Technologie chmurowe i DevOps',
+        period: 'kwi 2025 / lip 2026',
+      },
+      {
+        school: 'Uniwersytet Rzeszowski',
+        degree: 'Studia inżynierskie',
+        field: 'Informatyka',
+        period: 'paź 2021 / lut 2025',
+      },
+    ],
     projects: [
       {
         name: 'Nazwa projektu',
@@ -103,6 +117,7 @@ export const pl: Content = {
   nav: {
     home: { path: '', label: 'Start' },
     experience: { path: 'doswiadczenie', label: 'Doświadczenie' },
+    education: { path: 'wyksztalcenie', label: 'Wykształcenie' },
     projects: { path: 'projekty', label: 'Projekty' },
     stack: { path: 'stack', label: 'Stack' },
     contact: { path: 'kontakt', label: 'Kontakt' },
@@ -111,6 +126,10 @@ export const pl: Content = {
     experience: {
       title: 'Doświadczenie',
       lead: 'Gdzie pracowałem i czym się tam zajmowałem.',
+    },
+    education: {
+      title: 'Wykształcenie',
+      lead: 'Gdzie się uczyłem i w jakim kierunku.',
     },
     projects: {
       title: 'Projekty',

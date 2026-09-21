@@ -75,6 +75,20 @@ export const en: Content = {
         stack: ['Vue.js', '.NET'],
       },
     ],
+    education: [
+      {
+        school: 'University of Information Technology and Management in Rzeszów',
+        degree: "Master's degree",
+        field: 'Computer Software Engineering - Cloud Technologies and DevOps',
+        period: 'Apr 2025 / Jul 2026',
+      },
+      {
+        school: 'University of Rzeszów',
+        degree: "Engineer's degree",
+        field: 'Computer Software Engineering',
+        period: 'Oct 2021 / Feb 2025',
+      },
+    ],
     projects: [
       {
         name: 'Project name',
@@ -103,6 +117,7 @@ export const en: Content = {
   nav: {
     home: { path: '', label: 'Home' },
     experience: { path: 'experience', label: 'Experience' },
+    education: { path: 'education', label: 'Education' },
     projects: { path: 'projects', label: 'Projects' },
     stack: { path: 'stack', label: 'Stack' },
     contact: { path: 'contact', label: 'Contact' },
@@ -111,6 +126,10 @@ export const en: Content = {
     experience: {
       title: 'Experience',
       lead: 'Where I have worked and what I did there.',
+    },
+    education: {
+      title: 'Education',
+      lead: 'Where I studied and what I studied there.',
     },
     projects: {
       title: 'Projects',
