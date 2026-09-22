@@ -6,16 +6,13 @@ export const pl: Content = {
   profile: {
     role: 'Junior Backend Engineer',
     availableNote: 'Otwarty na rozmowy',
-    thesis:
-      'Buduję systemy backendowe, które da się utrzymać rok po tym, jak przestanę przy nich siedzieć.',
     intro: [
-      'Projektuję i rozwijam usługi obsługujące ruch produkcyjny - od modelu domeny i API, przez warstwę danych, po obserwowalność i wdrożenia.',
-      'Najlepiej czuję się tam, gdzie trzeba uporządkować istniejący system: rozplątać zależności, dołożyć testy i sprawić, żeby zespół znowu mógł szybko dowozić.',
+      'Pracuję jako junior backend developer w Kinguin. Buduję i utrzymuję aplikacje serwerowe - REST API i systemy rozproszone w Javie i Spring Boot, z MongoDB po stronie danych.',
+      'Tak samo ważna jest dla mnie druga połowa tej pracy: wdrożenia i skalowanie na Kubernetesie, stabilność i szybkie usuwanie błędów, monitoring i alerty w Prometheusie i Grafanie. Ścieżka akademicka idzie w tę samą stronę - po inżynierce z informatyki studia magisterskie z technologii chmurowych i DevOps.',
     ],
     metrics: [
-      { value: '8', unit: 'lat', label: 'w komercyjnym backendzie' },
-      { value: '20+', unit: '', label: 'wdrożonych usług' },
-      { value: '99.9', unit: '%', label: 'dostępności utrzymywanej produkcji' },
+      { value: '2', unit: 'lata', label: 'w komercyjnym backendzie' },
+      { value: 'B2', unit: '', label: 'angielski w pracy' },
     ],
     work: [
       {
@@ -40,7 +37,7 @@ export const pl: Content = {
             ],
           },
         ],
-        stack: ['Java', 'Spring Framework'],
+        stack: ['Java', 'Spring Framework', 'MongoDB'],
       },
       {
         company: 'Ideo Software',
@@ -154,7 +151,7 @@ export const pl: Content = {
     },
     stack: {
       title: 'Stack',
-      lead: 'Narzędzia, których używam na co dzień w produkcji.',
+      lead: 'Używane narzędzia i technologie.',
     },
     contact: {
       title: 'Kontakt',

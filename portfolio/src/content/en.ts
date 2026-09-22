@@ -6,16 +6,13 @@ export const en: Content = {
   profile: {
     role: 'Junior Backend Engineer',
     availableNote: 'Open to opportunities',
-    thesis:
-      'I build backend systems that are still maintainable a year after I stop working on them.',
     intro: [
-      'I design and develop services that carry production traffic - from the domain model and the API, through the data layer, to observability and deployment.',
-      'I am at my best where an existing system needs untangling: pulling dependencies apart, adding tests and getting the team shipping quickly again.',
+      'I work as a junior backend developer at Kinguin, building and maintaining server-side applications - REST APIs and distributed systems in Java and Spring Boot, with MongoDB on the data side.',
+      "The other half of the job matters just as much to me: deploying and scaling on Kubernetes, keeping systems stable and bugs short-lived, monitoring and alerting with Prometheus and Grafana. My academic track points the same way - an engineer's degree in computer science, then a master's in cloud technologies and DevOps.",
     ],
     metrics: [
-      { value: '8', unit: 'yrs', label: 'in commercial backend' },
-      { value: '20+', unit: '', label: 'services shipped' },
-      { value: '99.9', unit: '%', label: 'uptime on the production I maintain' },
+      { value: '2', unit: 'yrs', label: 'in commercial backend' },
+      { value: 'B2', unit: '', label: 'English at work' },
     ],
     work: [
       {
@@ -40,7 +37,7 @@ export const en: Content = {
             ],
           },
         ],
-        stack: ['Java', 'Spring Framework'],
+        stack: ['Java', 'Spring Framework', 'MongoDB'],
       },
       {
         company: 'Ideo Software',
@@ -154,7 +151,7 @@ export const en: Content = {
     },
     stack: {
       title: 'Stack',
-      lead: 'The tools I use in production day to day.',
+      lead: 'Tools and technologies used.',
     },
     contact: {
       title: 'Contact',

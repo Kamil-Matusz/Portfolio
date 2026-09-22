@@ -1,4 +1,4 @@
-import type { Tech } from './types'
+import type { IconKey, Tech } from './types'
 
 export const identity = {
   firstName: 'Kamil',
@@ -43,3 +43,39 @@ export const stackGroups = {
     { name: 'MongoDB', icon: 'mongodb' },
   ],
 } as const satisfies Record<string, readonly Tech[]>
+
+const techIcons = {
+  'java': 'java',
+  'spring': 'spring',
+  'spring boot': 'spring',
+  'spring framework': 'spring',
+  'hibernate': 'hibernate',
+  'c#': 'csharp',
+  '.net': 'dotnet',
+  'asp.net': 'dotnet',
+  'ef core': 'efcore',
+  'javascript': 'javascript',
+  'typescript': 'typescript',
+  'vue': 'vuejs',
+  'vue.js': 'vuejs',
+  'react': 'react',
+  'electron': 'electron',
+  'docker': 'docker',
+  'kubernetes': 'kubernetes',
+  'azure': 'azure',
+  'mysql': 'mysql',
+  'postgresql': 'postgresql',
+  'mssql': 'mssql',
+  'mongodb': 'mongodb',
+  'redis': 'redis',
+  'influxdb': 'influxdb',
+  'neo4j': 'neo4j',
+  'cypher': 'neo4j',
+  'rabbitmq': 'rabbitmq',
+  'python': 'python',
+} as const satisfies Record<string, IconKey>
+
+export function iconFor(name: string): IconKey | undefined {
+  const key = name.toLowerCase().replace(/\s+\d+(\.\d+)*$/, '')
+  return (techIcons as Record<string, IconKey>)[key]
+}

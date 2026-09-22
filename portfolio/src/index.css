@@ -6,6 +6,30 @@
   --rule: #2b2e28;
   --signal: #56b37c;
 
+  --brand-java: #e76f00;
+  --brand-spring: #6db33f;
+  --brand-csharp: #a179dc;
+  --brand-dotnet: #8c6ff0;
+  --brand-javascript: #f7df1e;
+  --brand-typescript: #4b9fe1;
+  --brand-vuejs: #41b883;
+  --brand-react: #61dafb;
+  --brand-docker: #2e9df0;
+  --brand-kubernetes: #4c82f7;
+  --brand-azure: #2aa0e8;
+  --brand-mysql: #3e9bc4;
+  --brand-postgresql: #66a3d8;
+  --brand-mssql: #e0433f;
+  --brand-mongodb: #4db33d;
+  --brand-rabbitmq: #ff6f1f;
+  --brand-influxdb: #22adf6;
+  --brand-redis: #e0534a;
+  --brand-hibernate: #bcae79;
+  --brand-electron: #6cb7c6;
+  --brand-python: #ffd845;
+  --brand-neo4j: #4aa8ff;
+  --brand-efcore: var(--brand-dotnet);
+
   --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   --prose: 'Newsreader', Georgia, serif;
   --mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;

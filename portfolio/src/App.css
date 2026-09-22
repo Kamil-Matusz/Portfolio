@@ -176,16 +176,6 @@
   border-top: 1px solid var(--ink);
 }
 
-.masthead__thesis {
-  font-family: var(--prose);
-  font-weight: 300;
-  font-size: clamp(1.4rem, 3vw, 2.35rem);
-  line-height: 1.24;
-  letter-spacing: -0.01em;
-  max-width: 24ch;
-  margin-top: var(--step);
-}
-
 /* ---------- subpage head ---------- */
 
 .pagehead {
@@ -294,9 +284,9 @@
 /* ---------- metrics ---------- */
 
 .metrics {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-  gap: 1.5rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 4rem;
   border-top: 1px solid var(--rule);
   padding-top: 1.5rem;
 }
@@ -318,7 +308,7 @@
 
 .metric__label {
   margin-top: 0.5rem;
-  max-width: 18ch;
+  max-width: 26ch;
   font-size: 0.875rem;
   color: var(--graphite);
   line-height: 1.4;
@@ -424,6 +414,9 @@
 }
 
 .tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-family: var(--mono);
   font-size: 0.6875rem;
   letter-spacing: 0.06em;
@@ -491,6 +484,11 @@
   width: 1.05rem;
   height: 1.05rem;
   fill: currentColor;
+}
+
+.icon--tag {
+  width: 0.85rem;
+  height: 0.85rem;
 }
 
 

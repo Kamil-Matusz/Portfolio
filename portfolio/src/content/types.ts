@@ -21,6 +21,14 @@ export type IconKey =
   | 'postgresql'
   | 'mssql'
   | 'mongodb'
+  | 'rabbitmq'
+  | 'influxdb'
+  | 'redis'
+  | 'hibernate'
+  | 'electron'
+  | 'python'
+  | 'neo4j'
+  | 'efcore'
 
 export interface Tech {
   readonly name: string
@@ -74,7 +82,6 @@ export interface Content {
   readonly profile: {
     readonly role: string
     readonly availableNote: string
-    readonly thesis: string
     readonly intro: readonly string[]
     readonly metrics: readonly Metric[]
     readonly work: readonly Job[]

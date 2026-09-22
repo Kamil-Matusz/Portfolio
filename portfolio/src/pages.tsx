@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { ReactNode } from 'react'
-import { certifications, hrefFor, identity, links, useLang, useSite } from './content'
-import type { RouteId, Tech } from './content'
+import { certifications, hrefFor, iconFor, identity, links, useLang, useSite } from './content'
+import type { IconKey, RouteId, Tech } from './content'
 
 function Section({
   id,
@@ -36,14 +36,32 @@ function PageHead({ title, lead }: { title: string; lead: string }) {
   )
 }
 
+function Mark({ icon, className = 'icon' }: { icon: IconKey; className?: string }) {
+  return (
+    <svg
+      className={className}
+      style={{ color: `var(--brand-${icon})` }}
+      aria-hidden="true"
+      focusable="false"
+    >
+      <use href={`#i-${icon}`} />
+    </svg>
+  )
+}
+
 function Tags({ items }: { items: readonly string[] }) {
   return (
     <ul className="tags">
-      {items.map((item) => (
-        <li key={item} className="tag">
-          {item}
-        </li>
-      ))}
+      {items.map((item) => {
+        const icon = iconFor(item)
+
+        return (
+          <li key={item} className="tag">
+            {icon && <Mark icon={icon} className="icon icon--tag" />}
+            {item}
+          </li>
+        )
+      })}
     </ul>
   )
 }
@@ -70,9 +88,7 @@ function Chips({ items }: { items: readonly Tech[] }) {
     <ul className="chips">
       {items.map((item) => (
         <li key={item.name} className="chip">
-          <svg className="icon" aria-hidden="true" focusable="false">
-            <use href={`#i-${item.icon}`} />
-          </svg>
+          <Mark icon={item.icon} />
           {item.name}
         </li>
       ))}
@@ -95,7 +111,6 @@ export function Home() {
           <span>{identity.location}</span>
           <span>{profile.availableNote}</span>
         </div>
-        <p className="masthead__thesis">{profile.thesis}</p>
       </header>
 
       <Section id="about" label={ui.about}>
