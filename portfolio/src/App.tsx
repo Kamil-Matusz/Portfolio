@@ -115,9 +115,9 @@ function useDocumentHead(lang: Lang, pathname: string) {
     document.documentElement.lang = lang
     document.title = id === 'home' ? ui.siteTitle : `${pages[id].title} / ${ui.siteTitle}`
 
-    const { origin } = window.location
-    for (const code of langs) alternate(code, origin + hrefFor(code, id))
-    alternate('x-default', origin + hrefFor(defaultLang, id))
+    const root = window.location.origin + import.meta.env.BASE_URL.replace(/\/$/, '')
+    for (const code of langs) alternate(code, root + hrefFor(code, id))
+    alternate('x-default', root + hrefFor(defaultLang, id))
   }, [lang, pathname])
 }
 
