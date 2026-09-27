@@ -37,7 +37,7 @@ export const pl: Content = {
             ],
           },
         ],
-        stack: ['Java', 'Spring Framework', 'MongoDB'],
+        stack: ['Java', 'Spring Framework', 'MongoDB', 'Prometheus', 'Grafana', 'Docker', 'K8s'],
       },
       {
         company: 'Ideo Software',

@@ -16,6 +16,8 @@ export type IconKey =
   | 'react'
   | 'docker'
   | 'kubernetes'
+  | 'prometheus'
+  | 'grafana'
   | 'azure'
   | 'mysql'
   | 'postgresql'
