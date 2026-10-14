@@ -25,7 +25,14 @@ export const pl: Content = {
             title: 'Junior Backend Developer',
             period: 'lut 2025 / teraz',
             summary: '',
-            points: [],
+            points: [
+              'Rozwój i utrzymanie rozproszonych mikroserwisów dla platformy e-commerce o dużym ruchu.',
+              'Projektowanie i implementacja REST API z wersjonowaniem, spójnymi kontraktami i obsługą błędów.',
+              'Poprawa bezpieczeństwa aplikacji - usuwanie podatności oraz wdrażanie autoryzacji i weryfikacji własności zasobów.',
+              'Integracje z zewnętrznymi dostawcami i udział w migracjach na nowe wersje ich API.',
+              'Analiza incydentów produkcyjnych w Grafanie i Prometheusie, w tym problemów z pamięcią na Kubernetesie, oraz przygotowywanie analiz przyczyn źródłowych i planów naprawczych.',
+              'Tworzenie metryk i dashboardów do monitorowania procesów biznesowych.',
+            ],
           },
           {
             title: 'Intern Backend Developer',

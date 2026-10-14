@@ -25,7 +25,14 @@ export const en: Content = {
             title: 'Junior Backend Developer',
             period: 'Feb 2025 / now',
             summary: '',
-            points: [],
+            points: [
+              'Develop and maintain distributed microservices for a high-traffic e-commerce platform.',
+              'Design and implement RESTful APIs with versioning, consistent contracts and error handling.',
+              'Improve application security by fixing vulnerabilities and implementing authorization and resource-ownership checks.',
+              'Integrate with third-party providers and take part in migrations to their new API versions.',
+              'Investigate production incidents with Grafana and Prometheus, including memory issues in Kubernetes, and write root-cause analyses and remediation plans.',
+              'Build metrics and dashboards to monitor business processes.',
+            ],
           },
           {
             title: 'Intern Backend Developer',
